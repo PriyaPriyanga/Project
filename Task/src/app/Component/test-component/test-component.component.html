@@ -1,0 +1,88 @@
+<!-- <div>
+   <table>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+    </tr>
+
+    <tr *ngFor="let item of dataAgent">
+    <td>{{item.id}}</td>
+    <td>{{item.name}}</td>
+    </tr>
+  </table>
+</div> -->
+
+
+<p-table #dt [columns]="cols" [value]="dataAgent" exportFilename="{{dynamicExportFileName}}">
+      
+        <ng-template pTemplate="caption">
+                <div style="text-align:left">
+        <!-- <tr>
+            <th>ID</th>
+            <th>Name</th>
+            
+        </tr> -->
+        <button class="all-btns" type="button" pButton label="CustomerMessages" (click)="dt.exportCSV()"></button>
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                    <span>{{col.header}}</span>
+                </th>
+            </tr>
+    </ng-template>
+
+    <!-- <ng-template pTemplate="body" let-Agent>
+        <tr>
+            <td>{{Agent.id}}</td>
+            <td>{{Agent.name}}</td>
+         
+        </tr>
+      
+    </ng-template> -->
+
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr [pSelectableRow]="rowData">
+                <td *ngFor="let col of columns">
+                    {{rowData[col.field] }}
+                </td>
+             </tr>
+        </ng-template>
+   
+   
+</p-table>
+
+<div>
+        
+   <input type="file" #fileImportInput name="File Upload" id="txtFileUpload" (change)="fileChangeListener($event)"
+    accept=".csv"/>
+        
+</div>
+
+<div>
+        
+          <table>
+            <thead>
+            <tr>
+
+              <th>ID</th>
+              <th>Name</th>
+             
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let csvData of csvRecords">
+        
+              <td>{{csvData.id}}</td>
+              <td>
+                <span>{{csvData.name}}</span>
+              </td>
+              
+            </tr>
+            </tbody>
+          </table>
+        
+        </div>
+

@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+.all-btns{
+    /* background: #00adef; */
+    background: #659bd1;
+    color: #fff;
+    font-size: 10px;
+    height: 10px;
+    line-height: 15px;
+    padding: 0 12px;
+    border-radius: 4px;
+  }
